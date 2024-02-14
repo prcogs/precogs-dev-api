@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  adonijs:
+    container_name: precogs-dev-api
+    build: ./
+    ports:
+      - "3333:3333"
