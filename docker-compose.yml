@@ -1,8 +1,19 @@
 version: '3'
 
 services:
+  maildev:
+    container_name: maildev
+    image: soulteary/maildev
+    ports:
+      - "1080:1080"
+      - "1025:1025"
+
   adonijs:
-    container_name: precogs-dev-api
-    build: ./
+    container_name: adonijs
+    image: node:21
+    command: tail -f /dev/null
+    volumes:
+      - .:/data
+    working_dir: /data
     ports:
       - "3333:3333"
