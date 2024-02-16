@@ -19,4 +19,4 @@ COPY ./.env ./build
 EXPOSE 3333
 
 # Start app
-CMD ["node", "./build/server.js"]
+CMD ["node", "./build/bin/server.js"]
