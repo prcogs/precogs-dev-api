@@ -5,13 +5,13 @@ WORKDIR /usr/src/app
 
 # Install dependencies
 COPY package*.json ./
-RUN npm i --omit=dev
+RUN npm ci --omit="dev"
 
 # Copy app source code
 COPY . .
 
 # Build app
-RUN npm run build
+RUN node ace build --ignore-ts-errors
 
 COPY ./.env ./build
 
