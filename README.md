@@ -15,3 +15,14 @@ npm run dev
 docker compose down --remove-orphans
 ```
 
+OR
+
+```bash
+npm install
+
+docker run --rm -it -v $PWD:/data --name precogs-dev-api -w /data -p 3333:3333 node:21 bash
+
+npm run dev
+```
+
+
