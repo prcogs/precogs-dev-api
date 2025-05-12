@@ -1,0 +1,22 @@
+FROM node:21
+
+# Met à jour les paquets et installe les certificats nécessaires
+RUN apt-get update && \
+    apt-get install -y ca-certificates curl gnupg lsb-release && \
+    update-ca-certificates
+
+# Vérification des certificats installés
+RUN ls -l /etc/ssl/certs/
+
+# (Optionnel) Vérifie les certificats SSL
+RUN curl https://www.google.com
+
+# Continue avec ton app (si nécessaire)
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+CMD ["npm", "start"]

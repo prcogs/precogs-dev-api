@@ -17,10 +17,12 @@ const mailConfig = defineConfig({
       ignoreTLS: true,
       requireTLS: false,
 
-      /**
-       * Uncomment the auth block if your SMTP
-       * server needs authentication
-       */
+      // secure: true,
+
+      // tls: {
+      //   rejectUnauthorized: false, // Désactive la vérification SSL
+      // },
+
       auth: {
         type: 'login',
         user: env.get('SMTP_USERNAME'),

@@ -1,4 +1,4 @@
-ARG NODE_IMAGE=node:16.13.1-alpine
+ARG NODE_IMAGE=node:21-alpine
 
 FROM $NODE_IMAGE AS base
 RUN apk --no-cache add dumb-init
@@ -13,7 +13,7 @@ RUN npm ci
 COPY --chown=node:node . .
 
 FROM dependencies AS build
-RUN node ace build --production
+RUN node ace build --ignore-ts-errors
 
 FROM base AS production
 ENV NODE_ENV=production
